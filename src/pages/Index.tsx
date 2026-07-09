@@ -312,12 +312,13 @@ const Index = () => {
                         ) : (
                           <Textarea
                             value={answers[q.question_id] ?? ""}
-                            onChange={(e) =>
+                            onChange={(e) => {
                               setAnswers((cur) => ({
                                 ...cur,
                                 [q.question_id]: e.target.value,
-                              }))
-                            }
+                              }));
+                              setActivePreset(null);
+                            }}
                             placeholder="（可留白）"
                             rows={3}
                           />
