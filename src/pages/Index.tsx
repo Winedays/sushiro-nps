@@ -72,7 +72,7 @@ const Index = () => {
       visited_time: visitedTime,
       answers,
     });
-    if (result.ok) {
+    if (result.ok === true) {
       setSubmit({ status: "success", code: result.code });
     } else {
       setSubmit({ status: "error", message: result.message, detail: result.detail });
