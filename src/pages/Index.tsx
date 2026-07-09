@@ -288,9 +288,10 @@ const Index = () => {
                         {q.form_type === 1 ? (
                           <RadioGroup
                             value={answers[q.question_id] ?? ""}
-                            onValueChange={(v) =>
-                              setAnswers((cur) => ({ ...cur, [q.question_id]: v }))
-                            }
+                            onValueChange={(v) => {
+                              setAnswers((cur) => ({ ...cur, [q.question_id]: v }));
+                              setActivePreset(null);
+                            }}
                             className="grid gap-2 md:grid-cols-2"
                           >
                             {q.options.map((o) => (
