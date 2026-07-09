@@ -11,6 +11,14 @@ export default defineConfig(({ mode }) => ({
     hmr: {
       overlay: false,
     },
+    proxy: {
+      "/sushiro-api": {
+        target: "https://nps.sushiro.com.tw",
+        changeOrigin: true,
+        secure: true,
+        rewrite: (p) => p.replace(/^\/sushiro-api/, ""),
+      },
+    },
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {

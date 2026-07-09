@@ -1,0 +1,785 @@
+[
+  {
+    "page_id": 1,
+    "page_name": "綜合滿意度",
+    "display_title": "請針對本次蒞臨消費的店舖回答以下問題。",
+    "questions": [
+      {
+        "question_id": 1,
+        "question_no": 1,
+        "content": "對於本次蒞臨消費的店舖之整體滿意度",
+        "form_type": 1,
+        "form_type_desc": "單選題 (Radio)",
+        "is_required": true,
+        "options": [
+          {
+            "option_no": "1",
+            "content": "非常滿意"
+          },
+          {
+            "option_no": "2",
+            "content": "滿意"
+          },
+          {
+            "option_no": "3",
+            "content": "沒有意見"
+          },
+          {
+            "option_no": "4",
+            "content": "不滿意"
+          },
+          {
+            "option_no": "5",
+            "content": "非常不滿意"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "page_id": 4,
+    "page_name": "利用類型",
+    "display_title": null,
+    "questions": [
+      {
+        "question_id": 4,
+        "question_no": 4,
+        "content": "本次消費體驗方式？",
+        "form_type": 1,
+        "form_type_desc": "單選題 (Radio)",
+        "is_required": true,
+        "options": [
+          {
+            "option_no": "1",
+            "content": "內用"
+          },
+          {
+            "option_no": "2",
+            "content": "外帶"
+          },
+          {
+            "option_no": "3",
+            "content": "以上兩者都有"
+          },
+          {
+            "option_no": "4",
+            "content": "外送"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "page_id": 5,
+    "page_name": "關鍵性要素設問",
+    "display_title": "請根據您的滿意度來填寫以下的問題（每個滿意度最高五分）",
+    "questions": [
+      {
+        "question_id": 5,
+        "question_no": 5,
+        "content": "服務迅速",
+        "form_type": 1,
+        "form_type_desc": "單選題 (Radio)",
+        "is_required": true,
+        "options": [
+          {
+            "option_no": "1",
+            "content": "非常滿意"
+          },
+          {
+            "option_no": "2",
+            "content": "滿意"
+          },
+          {
+            "option_no": "3",
+            "content": "沒有意見"
+          },
+          {
+            "option_no": "4",
+            "content": "不滿意"
+          },
+          {
+            "option_no": "5",
+            "content": "非常不滿意"
+          }
+        ]
+      },
+      {
+        "question_id": 6,
+        "question_no": 6,
+        "content": "食物的味道",
+        "form_type": 1,
+        "form_type_desc": "單選題 (Radio)",
+        "is_required": true,
+        "options": [
+          {
+            "option_no": "1",
+            "content": "非常滿意"
+          },
+          {
+            "option_no": "2",
+            "content": "滿意"
+          },
+          {
+            "option_no": "3",
+            "content": "沒有意見"
+          },
+          {
+            "option_no": "4",
+            "content": "不滿意"
+          },
+          {
+            "option_no": "5",
+            "content": "非常不滿意"
+          }
+        ]
+      },
+      {
+        "question_id": 7,
+        "question_no": 7,
+        "content": "餐點的多樣性",
+        "form_type": 1,
+        "form_type_desc": "單選題 (Radio)",
+        "is_required": true,
+        "options": [
+          {
+            "option_no": "1",
+            "content": "非常滿意"
+          },
+          {
+            "option_no": "2",
+            "content": "滿意"
+          },
+          {
+            "option_no": "3",
+            "content": "沒有意見"
+          },
+          {
+            "option_no": "4",
+            "content": "不滿意"
+          },
+          {
+            "option_no": "5",
+            "content": "非常不滿意"
+          }
+        ]
+      },
+      {
+        "question_id": 8,
+        "question_no": 8,
+        "content": "食物的溫度",
+        "form_type": 1,
+        "form_type_desc": "單選題 (Radio)",
+        "is_required": true,
+        "options": [
+          {
+            "option_no": "1",
+            "content": "非常滿意"
+          },
+          {
+            "option_no": "2",
+            "content": "滿意"
+          },
+          {
+            "option_no": "3",
+            "content": "沒有意見"
+          },
+          {
+            "option_no": "4",
+            "content": "不滿意"
+          },
+          {
+            "option_no": "5",
+            "content": "非常不滿意"
+          }
+        ]
+      },
+      {
+        "question_id": 9,
+        "question_no": 9,
+        "content": "店內的氣氛",
+        "form_type": 1,
+        "form_type_desc": "單選題 (Radio)",
+        "is_required": true,
+        "options": [
+          {
+            "option_no": "1",
+            "content": "非常滿意"
+          },
+          {
+            "option_no": "2",
+            "content": "滿意"
+          },
+          {
+            "option_no": "3",
+            "content": "沒有意見"
+          },
+          {
+            "option_no": "4",
+            "content": "不滿意"
+          },
+          {
+            "option_no": "5",
+            "content": "非常不滿意"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "page_id": 6,
+    "page_name": "關鍵性要素設問",
+    "display_title": "請根據您的滿意度來填寫以下的問題（每個滿意度最高五分）",
+    "questions": [
+      {
+        "question_id": 10,
+        "question_no": 10,
+        "content": "服務人員的態度",
+        "form_type": 1,
+        "form_type_desc": "單選題 (Radio)",
+        "is_required": true,
+        "options": [
+          {
+            "option_no": "1",
+            "content": "非常滿意"
+          },
+          {
+            "option_no": "2",
+            "content": "滿意"
+          },
+          {
+            "option_no": "3",
+            "content": "沒有意見"
+          },
+          {
+            "option_no": "4",
+            "content": "不滿意"
+          },
+          {
+            "option_no": "5",
+            "content": "非常不滿意"
+          }
+        ]
+      },
+      {
+        "question_id": 11,
+        "question_no": 11,
+        "content": "店鋪的整潔度",
+        "form_type": 1,
+        "form_type_desc": "單選題 (Radio)",
+        "is_required": true,
+        "options": [
+          {
+            "option_no": "1",
+            "content": "非常滿意"
+          },
+          {
+            "option_no": "2",
+            "content": "滿意"
+          },
+          {
+            "option_no": "3",
+            "content": "沒有意見"
+          },
+          {
+            "option_no": "4",
+            "content": "不滿意"
+          },
+          {
+            "option_no": "5",
+            "content": "非常不滿意"
+          }
+        ]
+      },
+      {
+        "question_id": 12,
+        "question_no": 12,
+        "content": "壽司食材的大小",
+        "form_type": 1,
+        "form_type_desc": "單選題 (Radio)",
+        "is_required": true,
+        "options": [
+          {
+            "option_no": "1",
+            "content": "非常滿意"
+          },
+          {
+            "option_no": "2",
+            "content": "滿意"
+          },
+          {
+            "option_no": "3",
+            "content": "沒有意見"
+          },
+          {
+            "option_no": "4",
+            "content": "不滿意"
+          },
+          {
+            "option_no": "5",
+            "content": "非常不滿意"
+          }
+        ]
+      },
+      {
+        "question_id": 13,
+        "question_no": 13,
+        "content": "餐點的外觀",
+        "form_type": 1,
+        "form_type_desc": "單選題 (Radio)",
+        "is_required": true,
+        "options": [
+          {
+            "option_no": "1",
+            "content": "非常滿意"
+          },
+          {
+            "option_no": "2",
+            "content": "滿意"
+          },
+          {
+            "option_no": "3",
+            "content": "沒有意見"
+          },
+          {
+            "option_no": "4",
+            "content": "不滿意"
+          },
+          {
+            "option_no": "5",
+            "content": "非常不滿意"
+          }
+        ]
+      },
+      {
+        "question_id": 14,
+        "question_no": 14,
+        "content": "本次提供的服務及餐點，是否符合您消費金額的對等價值?",
+        "form_type": 1,
+        "form_type_desc": "單選題 (Radio)",
+        "is_required": true,
+        "options": [
+          {
+            "option_no": "1",
+            "content": "非常滿意"
+          },
+          {
+            "option_no": "2",
+            "content": "滿意"
+          },
+          {
+            "option_no": "3",
+            "content": "沒有意見"
+          },
+          {
+            "option_no": "4",
+            "content": "不滿意"
+          },
+          {
+            "option_no": "5",
+            "content": "非常不滿意"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "page_id": 8,
+    "page_name": "問題經驗",
+    "display_title": null,
+    "questions": [
+      {
+        "question_id": 17,
+        "question_no": 17,
+        "content": "此次來店消費，是否有遇到什麼問題？",
+        "form_type": 1,
+        "form_type_desc": "單選題 (Radio)",
+        "is_required": true,
+        "options": [
+          {
+            "option_no": "1",
+            "content": "是"
+          },
+          {
+            "option_no": "2",
+            "content": "否"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "page_id": 10,
+    "page_name": "使用",
+    "display_title": "基於本次的消費經驗，",
+    "questions": [
+      {
+        "question_id": 19,
+        "question_no": 19,
+        "content": "您是否會在3個月內再度前往本次消費的門市進行消費?",
+        "form_type": 1,
+        "form_type_desc": "單選題 (Radio)",
+        "is_required": true,
+        "options": [
+          {
+            "option_no": "1",
+            "content": "一定會再來"
+          },
+          {
+            "option_no": "2",
+            "content": "想再來"
+          },
+          {
+            "option_no": "3",
+            "content": "可以考慮"
+          },
+          {
+            "option_no": "4",
+            "content": "還好"
+          },
+          {
+            "option_no": "5",
+            "content": "不會再來了"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "page_id": 35,
+    "page_name": "使用",
+    "display_title": null,
+    "questions": [
+      {
+        "question_id": 75,
+        "question_no": 75,
+        "content": "如願意再光顧台灣壽司郎，吸引您再次消費的主因是什麼呢？",
+        "form_type": 1,
+        "form_type_desc": "單選題 (Radio)",
+        "is_required": true,
+        "options": [
+          {
+            "option_no": "1",
+            "content": "餐點"
+          },
+          {
+            "option_no": "2",
+            "content": "活動"
+          },
+          {
+            "option_no": "3",
+            "content": "服務"
+          },
+          {
+            "option_no": "4",
+            "content": "環境"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "page_id": 11,
+    "page_name": "使用",
+    "display_title": null,
+    "questions": [
+      {
+        "question_id": 20,
+        "question_no": 20,
+        "content": "您是否會向親朋好友推薦本次用餐的台灣壽司郎門市？",
+        "form_type": 1,
+        "form_type_desc": "單選題 (Radio)",
+        "is_required": true,
+        "options": [
+          {
+            "option_no": "1",
+            "content": "10"
+          },
+          {
+            "option_no": "2",
+            "content": "9"
+          },
+          {
+            "option_no": "3",
+            "content": "8"
+          },
+          {
+            "option_no": "4",
+            "content": "7"
+          },
+          {
+            "option_no": "5",
+            "content": "6"
+          },
+          {
+            "option_no": "6",
+            "content": "5"
+          },
+          {
+            "option_no": "7",
+            "content": "4"
+          },
+          {
+            "option_no": "8",
+            "content": "3"
+          },
+          {
+            "option_no": "9",
+            "content": "2"
+          },
+          {
+            "option_no": "10",
+            "content": "1"
+          },
+          {
+            "option_no": "11",
+            "content": "0"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "page_id": 15,
+    "page_name": "OR調查",
+    "display_title": null,
+    "questions": [
+      {
+        "question_id": 27,
+        "question_no": 27,
+        "content": "請問服務人員有確實打招呼並喊出招呼語嗎？",
+        "form_type": 1,
+        "form_type_desc": "單選題 (Radio)",
+        "is_required": true,
+        "options": [
+          {
+            "option_no": "1",
+            "content": "有"
+          },
+          {
+            "option_no": "2",
+            "content": "沒有"
+          }
+        ]
+      },
+      {
+        "question_id": 28,
+        "question_no": 28,
+        "content": "請問服務人員有笑臉迎接客人嗎？",
+        "form_type": 1,
+        "form_type_desc": "單選題 (Radio)",
+        "is_required": true,
+        "options": [
+          {
+            "option_no": "1",
+            "content": "有"
+          },
+          {
+            "option_no": "2",
+            "content": "沒有"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "page_id": 27,
+    "page_name": "人口",
+    "display_title": "非常感謝您耐心回饋意見，不好意思再稍等一下，還有幾題就結束了。",
+    "questions": [
+      {
+        "question_id": 64,
+        "question_no": 64,
+        "content": "請問本次消費是您在過去3個月內，第幾次蒞臨台灣壽司郎門市？",
+        "form_type": 1,
+        "form_type_desc": "單選題 (Radio)",
+        "is_required": true,
+        "options": [
+          {
+            "option_no": "1",
+            "content": "第1次"
+          },
+          {
+            "option_no": "2",
+            "content": "第2次"
+          },
+          {
+            "option_no": "3",
+            "content": "第3次"
+          },
+          {
+            "option_no": "4",
+            "content": "第4次"
+          },
+          {
+            "option_no": "5",
+            "content": "5次以上"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "page_id": 30,
+    "page_name": "利用內容把握",
+    "display_title": null,
+    "questions": [
+      {
+        "question_id": 67,
+        "question_no": 67,
+        "content": "請問本次來店消費的原因是？請從下列選出最符合的項目。",
+        "form_type": 1,
+        "form_type_desc": "單選題 (Radio)",
+        "is_required": true,
+        "options": [
+          {
+            "option_no": "1",
+            "content": "離住家、公司近"
+          },
+          {
+            "option_no": "2",
+            "content": "店裡待客服務良好"
+          },
+          {
+            "option_no": "3",
+            "content": "因壽司餐點好吃"
+          },
+          {
+            "option_no": "4",
+            "content": "用餐氛圍良好"
+          },
+          {
+            "option_no": "5",
+            "content": "價格平實"
+          },
+          {
+            "option_no": "6",
+            "content": "看電視・廣告・傳單慕名而來"
+          },
+          {
+            "option_no": "7",
+            "content": "因為有想吃的餐點"
+          },
+          {
+            "option_no": "8",
+            "content": "親友推薦  "
+          },
+          {
+            "option_no": "9",
+            "content": "其他"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "page_id": 32,
+    "page_name": "競爭品牌",
+    "display_title": null,
+    "questions": [
+      {
+        "question_id": 70,
+        "question_no": 70,
+        "content": "請問在過去3個月內，您最常去的迴轉壽司店。（單選）",
+        "form_type": 1,
+        "form_type_desc": "單選題 (Radio)",
+        "is_required": true,
+        "options": [
+          {
+            "option_no": "1",
+            "content": "スシロー(壽司郎)"
+          },
+          {
+            "option_no": "2",
+            "content": "くら寿司(藏壽司)"
+          },
+          {
+            "option_no": "3",
+            "content": "はま寿司(HAMA壽司) "
+          },
+          {
+            "option_no": "4",
+            "content": "合點壽司"
+          },
+          {
+            "option_no": "5",
+            "content": "爭鮮迴轉壽司"
+          },
+          {
+            "option_no": "6",
+            "content": "海壽司"
+          },
+          {
+            "option_no": "7",
+            "content": "其他"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "page_id": 33,
+    "page_name": "追加自由回答設問",
+    "display_title": null,
+    "questions": [
+      {
+        "question_id": 72,
+        "question_no": 72,
+        "content": "此檔期的活動是否喜歡呢？若有任何意見或希望台灣壽司郎未來舉辦的促銷活動，請在此填入。若沒有，請略過。",
+        "form_type": 3,
+        "form_type_desc": "開放式文字題 (TextArea)",
+        "is_required": false,
+        "options": []
+      }
+    ]
+  },
+  {
+    "page_id": 34,
+    "page_name": "人口",
+    "display_title": null,
+    "questions": [
+      {
+        "question_id": 74,
+        "question_no": 74,
+        "content": "請問您的年齡是",
+        "form_type": 1,
+        "form_type_desc": "單選題 (Radio)",
+        "is_required": true,
+        "options": [
+          {
+            "option_no": "1",
+            "content": "未滿二十歲"
+          },
+          {
+            "option_no": "2",
+            "content": "二十到二十九歲"
+          },
+          {
+            "option_no": "3",
+            "content": "三十到三十九歲"
+          },
+          {
+            "option_no": "4",
+            "content": "四十到四十九歲"
+          },
+          {
+            "option_no": "5",
+            "content": "五十到五十九歲"
+          },
+          {
+            "option_no": "6",
+            "content": "六十到六十九歲"
+          },
+          {
+            "option_no": "7",
+            "content": "七十到七十九歲"
+          },
+          {
+            "option_no": "8",
+            "content": "不想回答"
+          }
+        ]
+      }
+    ]
+  }
+]
