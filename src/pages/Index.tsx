@@ -52,16 +52,19 @@ const Index = () => {
 
   const resetAllAnswers = () => {
     setAnswers(buildDefaultAnswers());
+    setActivePreset("default");
     toast({ title: "已重置為預設答案（全部 option 1）" });
   };
 
   const setAllBest = () => {
     setAnswers(buildBestAnswers());
+    setActivePreset("best");
     toast({ title: "已套用『全部最佳答案』" });
   };
 
-  const setAllOption = (optionNo: string, label: string) => {
+  const setAllOption = (optionNo: "1" | "2" | "3", label: string) => {
     setAnswers((cur) => applyUniformRadioAnswer(cur, optionNo));
+    setActivePreset(optionNo);
     toast({ title: `已將所有適用題目答為：${label}` });
   };
 
