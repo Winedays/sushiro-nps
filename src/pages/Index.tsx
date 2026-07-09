@@ -234,17 +234,27 @@ const Index = () => {
                 <div className="flex flex-wrap gap-2 rounded-md border border-dashed border-border p-3">
                   <span className="w-full text-xs font-medium text-muted-foreground">
                     一鍵批次填答（僅套用到有此選項的題目）
+                    {activePreset && (
+                      <span className="ml-2 text-primary">
+                        · 目前套用：
+                        {activePreset === "best"
+                          ? "全部最佳答案"
+                          : activePreset === "default"
+                          ? "預設答案"
+                          : `全部 option ${activePreset}`}
+                      </span>
+                    )}
                   </span>
-                  <Button size="sm" variant="secondary" onClick={setAllBest}>
+                  <Button size="sm" variant={activePreset === "best" ? "default" : "secondary"} onClick={setAllBest}>
                     全部最佳答案
                   </Button>
-                  <Button size="sm" variant="secondary" onClick={() => setAllOption("1", "option 1 / 非常滿意 / 有")}>
+                  <Button size="sm" variant={activePreset === "1" ? "default" : "secondary"} onClick={() => setAllOption("1", "option 1 / 非常滿意 / 有")}>
                     全部 option 1
                   </Button>
-                  <Button size="sm" variant="secondary" onClick={() => setAllOption("2", "option 2 / 滿意 / 沒有")}>
+                  <Button size="sm" variant={activePreset === "2" ? "default" : "secondary"} onClick={() => setAllOption("2", "option 2 / 滿意 / 沒有")}>
                     全部 option 2
                   </Button>
-                  <Button size="sm" variant="secondary" onClick={() => setAllOption("3", "option 3")}>
+                  <Button size="sm" variant={activePreset === "3" ? "default" : "secondary"} onClick={() => setAllOption("3", "option 3")}>
                     全部 option 3
                   </Button>
                   <Button size="sm" variant="ghost" onClick={resetAllAnswers}>
