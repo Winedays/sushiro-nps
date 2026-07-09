@@ -37,7 +37,8 @@ const Index = () => {
   const [invitationCode, setInvitationCode] = useState<string>(() => generateInvitationCode());
   const [totalPrice, setTotalPrice] = useState<string>(() => generateTotalPrice());
   const [visitedTime, setVisitedTime] = useState<string>(() => generateVisitedTime());
-  const [answers, setAnswers] = useState<Record<number, string>>(() => buildDefaultAnswers());
+  const [answers, setAnswers] = useState<Record<number, string>>(() => buildBestAnswers());
+  const [activePreset, setActivePreset] = useState<"best" | "1" | "2" | "3" | "default" | null>("best");
   const [showQuestions, setShowQuestions] = useState(false);
   const [submit, setSubmit] = useState<SubmitState>({ status: "idle" });
 
