@@ -37,7 +37,8 @@ const Index = () => {
   const [invitationCode, setInvitationCode] = useState<string>(() => generateInvitationCode());
   const [totalPrice, setTotalPrice] = useState<string>(() => generateTotalPrice());
   const [visitedTime, setVisitedTime] = useState<string>(() => generateVisitedTime());
-  const [answers, setAnswers] = useState<Record<number, string>>(() => buildDefaultAnswers());
+  const [answers, setAnswers] = useState<Record<number, string>>(() => buildBestAnswers());
+  const [activePreset, setActivePreset] = useState<"best" | "1" | "2" | "3" | "default" | null>("best");
   const [showQuestions, setShowQuestions] = useState(false);
   const [submit, setSubmit] = useState<SubmitState>({ status: "idle" });
 
@@ -51,16 +52,19 @@ const Index = () => {
 
   const resetAllAnswers = () => {
     setAnswers(buildDefaultAnswers());
+    setActivePreset("default");
     toast({ title: "已重置為預設答案（全部 option 1）" });
   };
 
   const setAllBest = () => {
     setAnswers(buildBestAnswers());
+    setActivePreset("best");
     toast({ title: "已套用『全部最佳答案』" });
   };
 
-  const setAllOption = (optionNo: string, label: string) => {
+  const setAllOption = (optionNo: "1" | "2" | "3", label: string) => {
     setAnswers((cur) => applyUniformRadioAnswer(cur, optionNo));
+    setActivePreset(optionNo);
     toast({ title: `已將所有適用題目答為：${label}` });
   };
 
@@ -230,17 +234,27 @@ const Index = () => {
                 <div className="flex flex-wrap gap-2 rounded-md border border-dashed border-border p-3">
                   <span className="w-full text-xs font-medium text-muted-foreground">
                     一鍵批次填答（僅套用到有此選項的題目）
+                    {activePreset && (
+                      <span className="ml-2 text-primary">
+                        · 目前套用：
+                        {activePreset === "best"
+                          ? "全部最佳答案"
+                          : activePreset === "default"
+                          ? "預設答案"
+                          : `全部 option ${activePreset}`}
+                      </span>
+                    )}
                   </span>
-                  <Button size="sm" variant="secondary" onClick={setAllBest}>
+                  <Button size="sm" variant={activePreset === "best" ? "default" : "secondary"} onClick={setAllBest}>
                     全部最佳答案
                   </Button>
-                  <Button size="sm" variant="secondary" onClick={() => setAllOption("1", "option 1 / 非常滿意 / 有")}>
+                  <Button size="sm" variant={activePreset === "1" ? "default" : "secondary"} onClick={() => setAllOption("1", "option 1 / 非常滿意 / 有")}>
                     全部 option 1
                   </Button>
-                  <Button size="sm" variant="secondary" onClick={() => setAllOption("2", "option 2 / 滿意 / 沒有")}>
+                  <Button size="sm" variant={activePreset === "2" ? "default" : "secondary"} onClick={() => setAllOption("2", "option 2 / 滿意 / 沒有")}>
                     全部 option 2
                   </Button>
-                  <Button size="sm" variant="secondary" onClick={() => setAllOption("3", "option 3")}>
+                  <Button size="sm" variant={activePreset === "3" ? "default" : "secondary"} onClick={() => setAllOption("3", "option 3")}>
                     全部 option 3
                   </Button>
                   <Button size="sm" variant="ghost" onClick={resetAllAnswers}>
@@ -274,9 +288,10 @@ const Index = () => {
                         {q.form_type === 1 ? (
                           <RadioGroup
                             value={answers[q.question_id] ?? ""}
-                            onValueChange={(v) =>
-                              setAnswers((cur) => ({ ...cur, [q.question_id]: v }))
-                            }
+                            onValueChange={(v) => {
+                              setAnswers((cur) => ({ ...cur, [q.question_id]: v }));
+                              setActivePreset(null);
+                            }}
                             className="grid gap-2 md:grid-cols-2"
                           >
                             {q.options.map((o) => (
@@ -297,12 +312,13 @@ const Index = () => {
                         ) : (
                           <Textarea
                             value={answers[q.question_id] ?? ""}
-                            onChange={(e) =>
+                            onChange={(e) => {
                               setAnswers((cur) => ({
                                 ...cur,
                                 [q.question_id]: e.target.value,
-                              }))
-                            }
+                              }));
+                              setActivePreset(null);
+                            }}
                             placeholder="（可留白）"
                             rows={3}
                           />
