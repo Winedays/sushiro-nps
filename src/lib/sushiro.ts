@@ -1,7 +1,16 @@
 import { ALL_QUESTIONS, type SurveyQuestion } from "@/data/questions";
 
 const API_KEY = "web:624a677331626b5044e9bb25a1fcf8a9";
-const API_BASE = "/sushiro-api";
+
+const getApiBase = (): string => {
+  if (typeof window !== "undefined") {
+    const custom = window.localStorage.getItem("sushiro_proxy_url");
+    if (custom) return custom;
+  }
+  return import.meta.env.PROD
+    ? "https://corsproxy.io/?https://nps.sushiro.com.tw"
+    : "/sushiro-api";
+};
 
 export const VISITED_TIME_OPTIONS = [
   { value: "1", label: "～14 時" },
@@ -121,7 +130,7 @@ export async function submitSurvey(payload: SubmitPayload): Promise<SubmitSucces
 
   let res: Response;
   try {
-    res = await fetch(`${API_BASE}/api/v1/surveys/next`, {
+    res = await fetch(`${getApiBase()}/api/v1/surveys/next`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
