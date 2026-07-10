@@ -1,4 +1,5 @@
-import raw from "./questions.json";
+import twRaw from "./questions.json";
+import hkRaw from "./questions.hk.json";
 
 export type SurveyOption = { option_no: string; content: string };
 export type SurveyQuestion = {
@@ -17,6 +18,19 @@ export type SurveyPage = {
   questions: SurveyQuestion[];
 };
 
-export const SURVEY_PAGES = raw as unknown as SurveyPage[];
+export type Region = "TW" | "HK";
 
-export const ALL_QUESTIONS: SurveyQuestion[] = SURVEY_PAGES.flatMap((p) => p.questions);
+export const SURVEY_PAGES_BY_REGION: Record<Region, SurveyPage[]> = {
+  TW: twRaw as unknown as SurveyPage[],
+  HK: hkRaw as unknown as SurveyPage[],
+};
+
+export const getSurveyPages = (region: Region): SurveyPage[] =>
+  SURVEY_PAGES_BY_REGION[region];
+
+export const getAllQuestions = (region: Region): SurveyQuestion[] =>
+  getSurveyPages(region).flatMap((p) => p.questions);
+
+// Backwards-compat (TW default)
+export const SURVEY_PAGES = SURVEY_PAGES_BY_REGION.TW;
+export const ALL_QUESTIONS: SurveyQuestion[] = getAllQuestions("TW");

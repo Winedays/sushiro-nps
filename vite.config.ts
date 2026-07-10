@@ -13,6 +13,12 @@ export default defineConfig(({ mode }) => ({
       overlay: false,
     },
     proxy: {
+      "/sushiro-api-hk": {
+        target: "https://nps.sushiro.com.hk",
+        changeOrigin: true,
+        secure: true,
+        rewrite: (p) => p.replace(/^\/sushiro-api-hk/, ""),
+      },
       "/sushiro-api": {
         target: "https://nps.sushiro.com.tw",
         changeOrigin: true,
