@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -14,12 +14,14 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { toast } from "@/hooks/use-toast";
-import { SURVEY_PAGES } from "@/data/questions";
+import { getSurveyPages, type Region } from "@/data/questions";
 import {
+  REGION_CONFIG,
   VISITED_TIME_OPTIONS,
   applyUniformRadioAnswer,
   buildBestAnswers,
   buildDefaultAnswers,
+  detectRegion,
   generateInvitationCode,
   generateTotalPrice,
   generateVisitedTime,
@@ -34,15 +36,28 @@ type SubmitState =
   | { status: "error"; message: string; detail?: unknown };
 
 const Index = () => {
+  const [region, setRegion] = useState<Region>(() => detectRegion());
   const [invitationCode, setInvitationCode] = useState<string>(() => generateInvitationCode());
   const [totalPrice, setTotalPrice] = useState<string>(() => generateTotalPrice());
   const [visitedTime, setVisitedTime] = useState<string>(() => generateVisitedTime());
-  const [answers, setAnswers] = useState<Record<number, string>>(() => buildBestAnswers());
+  const [answers, setAnswers] = useState<Record<number, string>>(() => buildBestAnswers(region));
   const [activePreset, setActivePreset] = useState<"best" | "1" | "2" | "3" | "default" | null>("best");
   const [showQuestions, setShowQuestions] = useState(false);
   const [submit, setSubmit] = useState<SubmitState>({ status: "idle" });
 
-  const counts = useMemo(() => questionCount(), []);
+  const pages = useMemo(() => getSurveyPages(region), [region]);
+  const counts = useMemo(() => questionCount(region), [region]);
+  const regionCfg = REGION_CONFIG[region];
+  const apiHost = regionCfg.apiHost.replace(/^https?:\/\//, "");
+
+  const switchRegion = (next: Region) => {
+    if (next === region) return;
+    setRegion(next);
+    setAnswers(buildBestAnswers(next));
+    setActivePreset("best");
+    setSubmit({ status: "idle" });
+    toast({ title: `已切換至 ${REGION_CONFIG[next].label} 問卷` });
+  };
 
   const rerollBasics = () => {
     setInvitationCode(generateInvitationCode());
@@ -51,19 +66,19 @@ const Index = () => {
   };
 
   const resetAllAnswers = () => {
-    setAnswers(buildDefaultAnswers());
+    setAnswers(buildDefaultAnswers(region));
     setActivePreset("default");
     toast({ title: "已重置為預設答案（全部 option 1）" });
   };
 
   const setAllBest = () => {
-    setAnswers(buildBestAnswers());
+    setAnswers(buildBestAnswers(region));
     setActivePreset("best");
     toast({ title: "已套用『全部最佳答案』" });
   };
 
   const setAllOption = (optionNo: "1" | "2" | "3", label: string) => {
-    setAnswers((cur) => applyUniformRadioAnswer(cur, optionNo));
+    setAnswers((cur) => applyUniformRadioAnswer(cur, optionNo, region));
     setActivePreset(optionNo);
     toast({ title: `已將所有適用題目答為：${label}` });
   };
@@ -71,6 +86,7 @@ const Index = () => {
   const handleSubmit = async () => {
     setSubmit({ status: "loading" });
     const result = await submitSurvey({
+      region,
       invitation_code: invitationCode.trim(),
       total_price: totalPrice.trim(),
       visited_time: visitedTime,
@@ -96,13 +112,38 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <div className="mx-auto max-w-3xl px-4 py-10">
         <header className="mb-8">
-          <Badge variant="secondary" className="mb-3">Sushiro NPS · 一頁式填寫</Badge>
+          <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+            <Badge variant="secondary">Sushiro NPS · 一頁式填寫</Badge>
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-muted-foreground">地區</span>
+              <div className="inline-flex overflow-hidden rounded-md border border-border">
+                {(["TW", "HK"] as Region[]).map((r) => (
+                  <button
+                    key={r}
+                    type="button"
+                    onClick={() => switchRegion(r)}
+                    className={
+                      "px-3 py-1 text-sm transition-colors " +
+                      (region === r
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-card text-foreground hover:bg-accent")
+                    }
+                  >
+                    {REGION_CONFIG[r].label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
           <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
             壽司郎問卷一鍵送出
           </h1>
           <p className="mt-2 text-muted-foreground">
             共 {counts.radio} 題單選 + {counts.text} 題文字。所有欄位皆已預設好，
             按下「送出問卷」即可拿到 5 碼折價券認證碼。
+          </p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            目前送出目的地：<code>{apiHost}</code>（{regionCfg.label}）。
           </p>
           <p className="mt-1 text-sm text-muted-foreground">
             ⚠ 邀請序號僅在用餐日起 6 日內有效。若失敗，請改填實體折價券上的序號與金額。
@@ -159,13 +200,13 @@ const Index = () => {
           </CardContent>
         </Card>
 
-        {/* 送出按鈕 - 放在題目上方，符合「不用捲動即可送出」的理想情境 */}
+        {/* 送出按鈕 */}
         <Card className="mb-6 border-primary/40 bg-primary/5">
           <CardContent className="flex flex-col items-stretch gap-3 py-6 md:flex-row md:items-center md:justify-between">
             <div>
               <p className="text-lg font-semibold">準備好了嗎？</p>
               <p className="text-sm text-muted-foreground">
-                所有題目預設答為 option 1（多數為「非常滿意」）。直接送出即可。
+                所有題目預設為「全部最佳答案」。直接送出即可。
               </p>
             </div>
             <Button
@@ -262,7 +303,7 @@ const Index = () => {
                   </Button>
                 </div>
 
-                {SURVEY_PAGES.map((page, pageIdx) => (
+                {pages.map((page, pageIdx) => (
                   <div key={page.page_id} className="space-y-4">
                     {pageIdx > 0 && <Separator />}
                     <div>
@@ -334,7 +375,7 @@ const Index = () => {
 
         <footer className="mt-8 text-center text-xs text-muted-foreground">
           非官方工具。本頁面僅將官方多頁問卷壓縮為單頁；資料直接送至{" "}
-          <code>nps.sushiro.com.tw</code>。
+          <code>{apiHost}</code>。
         </footer>
       </div>
     </div>
