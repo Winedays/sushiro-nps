@@ -401,25 +401,9 @@ const Index = () => {
           </Collapsible>
         </Card>
 
-        <footer className="mt-8 space-y-3 text-center text-xs text-muted-foreground">
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            <Button asChild variant="outline" size="sm">
-              <a
-                href="https://github.com/adlerau/sushiro-nps-fast-submit"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                GitHub 專案
-              </a>
-            </Button>
-            <Button asChild variant="outline" size="sm">
-              <a href="mailto:adlerau.work@gmail.com">聯絡我們</a>
-            </Button>
-          </div>
-          <p>
-            非官方工具。本頁面僅將官方多頁問卷壓縮為單頁；資料直接送至{" "}
-            <code>{apiHost}</code>。
-          </p>
+        <footer className="mt-8 text-center text-xs text-muted-foreground">
+          非官方工具。本頁面僅將官方多頁問卷壓縮為單頁；資料直接送至{" "}
+          <code>{apiHost}</code>。
         </footer>
       </div>
     </div>
