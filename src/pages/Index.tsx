@@ -111,6 +111,33 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-lg">
+        <div className="mx-auto flex h-14 max-w-3xl items-center justify-between px-4">
+          <span className="text-sm font-semibold tracking-tight">
+            🍣 Sushiro NPS Fast Submit
+          </span>
+          <nav className="flex items-center gap-1">
+            <a
+              href="mailto:adlerau.work@gmail.com"
+              className="flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+              title="聯絡我們"
+            >
+              <Mail className="h-4 w-4" />
+              <span className="hidden sm:inline">聯絡我們</span>
+            </a>
+            <a
+              href="https://github.com/Winedays/sushiro-nps"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+              title="GitHub"
+            >
+              <Github className="h-4 w-4" />
+              <span className="hidden sm:inline">GitHub</span>
+            </a>
+          </nav>
+        </div>
+      </header>
       <div className="mx-auto max-w-3xl px-4 py-10">
         <header className="mb-8">
           <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
